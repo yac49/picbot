@@ -51,14 +51,12 @@ class util(commands.Cog, name='utility'):
         
     @tasks.loop(seconds=10)
     async def statusloop(self,guild)-> None:
-        # await asyncio.sleep(10)
-        # try:
-        #   user_amount=f"{len([m for m in self.bot.get_all_members() if not m.bot])} 位成員！嗨囉><"
-        #   await self.bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name=user_amount))
-        # except Exception as e:
-        #     print(e)
-      # await asyncio.sleep(10)
-      print('execute')
+        await asyncio.sleep(10)
+        try:
+          user_amount=f"{len([m for m in self.bot.get_all_members() if not m.bot])} 位成員！嗨囉><"
+          await self.bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name=user_amount))
+        except Exception as e:
+            print(e)
       
 
     @statusloop.before_loop
@@ -88,10 +86,6 @@ class util(commands.Cog, name='utility'):
         # emoji = '<:2CatMeeting:918811455325863966>'
         await message.delete()
         await message.channel.send(response)
-      # elif '.com' in content:
-      #   url = re.search("(?P<url>https?://[^\s]+)", content).group("url")
-      #   url = unquote(url)
-      #   await message.channel.send(url)
       
       # check if is @@, send message
       if "@@" in content:
